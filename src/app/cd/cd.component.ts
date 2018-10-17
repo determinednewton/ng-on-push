@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { timer } from 'rxjs';
+import { Observable, timer } from 'rxjs';
 import { takeWhile } from 'rxjs/operators';
 
 @Component({
@@ -9,16 +9,13 @@ import { takeWhile } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CdComponent {
-  @Input() number = -1;
+  @Input() number: Observable<number>;
 
   constructor(changeDetectorRef: ChangeDetectorRef) {
-    timer(0, 1000)
+    this.number = timer(0, 1000)
       .pipe(
         takeWhile((n) => (n < 100))
-      ).subscribe((n) => {
-        this.number = n;
-        changeDetectorRef.detectChanges();
-    });
+      );
   }
 
   log() {
