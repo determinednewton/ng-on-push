@@ -14,12 +14,13 @@ export class AppComponent {
   parentNumber: any;
 
   constructor() {
-    timer(0, 1000)
-      .pipe(
-        takeWhile((n) => (n < 100))
-      ).subscribe((n) => {
-        this.parentNumber = n;
-    });
+    // timer(0, 1000)
+    //   .pipe(
+    //     takeWhile((n) => (n < 100))
+    //   ).subscribe((n) => {
+    //     this.parentNumber = n;
+    // });
+    // this.parentNumber = 0;
   }
 
 }

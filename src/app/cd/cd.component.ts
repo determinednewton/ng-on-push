@@ -11,6 +11,15 @@ import { takeWhile } from 'rxjs/operators';
 export class CdComponent {
   @Input() number = -1;
 
+  constructor() {
+    timer(0, 1000)
+      .pipe(
+        takeWhile((n) => (n < 100))
+      ).subscribe((n) => {
+        this.number = n;
+    });
+  }
+
   log() {
     console.log('clicked me!');
   }
