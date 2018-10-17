@@ -9,13 +9,9 @@ import { takeWhile } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CdComponent {
-  @Input() number: Observable<number>;
+  @Input() number = -1;
 
-  constructor(changeDetectorRef: ChangeDetectorRef) {
-    this.number = timer(0, 1000)
-      .pipe(
-        takeWhile((n) => (n < 100))
-      );
+  constructor() {
   }
 
   log() {

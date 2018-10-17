@@ -11,16 +11,12 @@ import { takeWhile } from 'rxjs/operators';
 export class AppComponent {
   title = 'ng-on-push';
 
-  parentNumber: any;
+  parentNumber: Observable<number>;
 
   constructor() {
-    // timer(0, 1000)
-    //   .pipe(
-    //     takeWhile((n) => (n < 100))
-    //   ).subscribe((n) => {
-    //     this.parentNumber = n;
-    // });
-    // this.parentNumber = 0;
+    this.parentNumber = timer(0, 1000)
+      .pipe(
+        takeWhile((n) => (n < 100)));
   }
 
 }
