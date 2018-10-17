@@ -8,20 +8,18 @@ import { takeWhile } from 'rxjs/operators';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent {
   title = 'ng-on-push';
 
-  number: Observable<number>;
-
-  @ViewChild(CdComponent) cdComponent;
+  parentNumber: any;
 
   constructor() {
-    this.number = timer(0, 1000)
+    timer(0, 1000)
       .pipe(
         takeWhile((n) => (n < 100))
-      );
+      ).subscribe((n) => {
+        this.parentNumber = n;
+    });
   }
 
-  ngAfterViewInit() {
-  }
 }
